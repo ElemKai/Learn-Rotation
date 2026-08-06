@@ -1,0 +1,32 @@
+name: Update APL Data
+
+on:
+  schedule:
+    # Запуск каждые 3 часа
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-apl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run APL parser
+        run: node scripts/fetch-apl.js
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: обновить APL данные" && git push)

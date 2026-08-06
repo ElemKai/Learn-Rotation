@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WoW Midnight Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Dark theme by default (WoW Midnight style) */
+  --wow-bg-primary: #0a0e14;
+  --wow-bg-secondary: #12161f;
+  --wow-bg-hover: #1a1f29;
+  --wow-border: #2d3548;
+  --wow-text-primary: #ffffff;
+  --wow-text-secondary: #a0aec0;
+  --wow-text-muted: #718096;
+  --wow-accent: #7d5fff;
+  --wow-gold: #ffd700;
+}
+
+[data-theme='light'] {
+  --wow-bg-primary: #f5f0e6;
+  --wow-bg-secondary: #ffffff;
+  --wow-bg-hover: #e8e4dc;
+  --wow-border: #d4cfc7;
+  --wow-text-primary: #1a202c;
+  --wow-text-secondary: #4a5568;
+  --wow-text-muted: #718096;
+  --wow-accent: #5b3fa8;
+  --wow-gold: #b8860b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--wow-bg-primary);
+  color: var(--wow-text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: var(--wow-text-primary);
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+a {
+  color: var(--wow-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--wow-gold);
+}
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--wow-bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--wow-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--wow-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wow-accent);
+}
+
+/* WoW Style Card */
+.wow-card {
+  background: var(--wow-bg-secondary);
+  border: 1px solid var(--wow-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.wow-card:hover {
+  border-color: var(--wow-accent);
+  box-shadow: 0 0 20px rgba(125, 95, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* WoW Button */
+.wow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  border: 2px solid var(--wow-accent);
+  background: linear-gradient(135deg, var(--wow-accent) 0%, #5b3fa8 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wow-button:hover {
+  box-shadow: 0 0 20px rgba(125, 95, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.wow-button--gold {
+  border-color: var(--wow-gold);
+  background: linear-gradient(135deg, var(--wow-gold) 0%, #b8860b 100%);
+}
+
+.wow-button--gold:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Rarity Colors */
+.rarity-common { color: #9d9d9d; }
+.rarity-uncommon { color: #1eff00; }
+.rarity-rare { color: #0070dd; }
+.rarity-epic { color: #a335ee; }
+.rarity-legendary { color: #ffd700; }
+
+/* Faction Colors */
+.faction-alliance { color: #0066cc; }
+.faction-horde { color: #cc0000; }
